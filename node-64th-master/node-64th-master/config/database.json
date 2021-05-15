@@ -1,0 +1,7 @@
+{
+    "config" : {
+        "user": "React",
+        "password": "React",
+        "connectString": "localhost/xe"
+    }
+}

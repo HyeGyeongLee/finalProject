@@ -1,0 +1,35 @@
+delete from member;
+
+insert into member values('id2','id2','id2','id2');
+insert into member values('id3','id3','id3','id3');
+insert into member values('id4','id4','id4','id4');
+insert into member values('id5','id5','id5','id5');
+insert into member values('id6','id6','id6','id6');
+
+
+
+commit;
+
+create or replace PROCEDURE P_INSERT_MEMBER
+(
+   ID_IN IN VARCHAR2,
+   PW_IN IN VARCHAR2,
+   ADDR_IN IN VARCHAR2,
+   TEL_IN IN VARCHAR2,
+ ERROR_CODE OUT NUMBER,
+ ERROR_MSG OUT VARCHAR2,
+ RESULT OUT SYS_REFCURSOR
+)
+IS
+
+BEGIN
+
+INSERT INTO MEMBER VALUES(ID_IN, PW_IN, ADDR_IN,TEL_IN);
+
+OPEN RESULT FOR
+    SELECT * FROM MEMBER;
+ERROR_CODE:=0;
+ERROR_MSG:='성공';
+COMMIT;
+
+END P_INSERT_MEMBER;
